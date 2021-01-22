@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    >
+
+    <TextView
+        android:id="@+id/alarmText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Title"></TextView>
+
+    <TextView
+        android:id="@+id/alarmTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Time"></TextView>
+
+    <TextView
+        android:id="@+id/alarmDays"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Alarm days"></TextView>
+
+    <Switch
+        android:id="@+id/alarmActive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="1" />
+
+
+</LinearLayout>

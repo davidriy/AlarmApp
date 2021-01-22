@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Alarm</string>
+    <string name="new_alarm_btn">Create new alarm</string>
+    <string name="name_text_view">Alarm name</string>
+    <string name="repeat_btn">Repeat</string>
+    <string name="time_btn">Time</string>
+    <string name="OK_btn">OK</string>
+    <string name="CANCEL_btn">CANCEL</string>
+    <string name="repeat_title">Select the days you wish</string>
+    <string-array name="day_select_choice_array">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+    <string name="day_1">Monday</string>
+    <string name="day_2">Tuesday</string>
+    <string name="day_3">Wednesday</string>
+    <string name="day_4">Thursday</string>
+    <string name="day_5">Friday</string>
+    <string name="day_6">Saturday</string>
+    <string name="day_7">Sunday</string>
+    <string name="day_1_short">Mo</string>
+    <string name="day_2_short">Tu</string>
+    <string name="day_3_short">We</string>
+    <string name="day_4_short">Th</string>
+    <string name="day_5_short">Fr</string>
+    <string name="day_6_short">Sa</string>
+    <string name="day_7_short">Su</string>
+    <string name="alarm_default_name">Alarm_</string>
+    <string name="alert_max_alarm">You have reached the maximum allowed alarms (5) </string>
+    <string name="delete_title">Do you really want to delete this alarm?</string>
+</resources>
