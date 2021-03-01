@@ -31,6 +31,8 @@ public class NewAlarm extends AppCompatActivity {
     ImageButton saveBtn;
     TimePicker timePicker;
     EditText alarmName;
+    // Controla
+    boolean alarmSaved;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class NewAlarm extends AppCompatActivity {
 
     public void manager(){
         alarm = new Alarm("", true, "10", "22", new DaysOfWeek(false, false, false, false, false, false, false));
+        alarmSaved = false;
         instanciateDialogDays();
         manageInputName();
         manageTimePicker();
@@ -90,30 +93,34 @@ public class NewAlarm extends AppCompatActivity {
         return dayOfWeek;
     }
     public void manageSaveBtn(){
-        // Se resta uno para cumplir con el índice base 1
-        final int dayOfWeek = getActualDayOfWeek() - 1;
-        final int nextDay = dayOfWeek + 1;
-        saveBtn = findViewById(R.id.saveBtn);
-        saveBtn.setOnClickListener(
-                new View.OnClickListener(){
-                    // Required API for LocalTime
-                    @RequiresApi(api = Build.VERSION_CODES.O)
-                    @Override
-                    public void onClick(View v) {
-                        if(isAllDaysFalse()){
-                            // Si no se selecciona un dia que ponga el dia actual si la hora no ha pasado y si ha pasado que sea la del dia siguiente
-                            if(selectedTimeIsAfterActualTime()){
-                                setChecked(true, dayOfWeek);
+        // If the alarm has not been saved already
+        if(!alarmSaved){
+            alarmSaved = true;
+            // Se resta uno para cumplir con el índice base 1
+            final int dayOfWeek = getActualDayOfWeek() - 1;
+            final int nextDay = dayOfWeek + 1;
+            saveBtn = findViewById(R.id.saveBtn);
+            saveBtn.setOnClickListener(
+                    new View.OnClickListener(){
+                        // Required API for LocalTime
+                        @RequiresApi(api = Build.VERSION_CODES.O)
+                        @Override
+                        public void onClick(View v) {
+                            if(isAllDaysFalse()){
+                                // Si no se selecciona un dia que ponga el dia actual si la hora no ha pasado y si ha pasado que sea la del dia siguiente
+                                if(selectedTimeIsAfterActualTime()){
+                                    setChecked(true, dayOfWeek);
+                                }
+                                else {
+                                    setChecked(true, nextDay);
+                                }
                             }
-                            else {
-                                setChecked(true, nextDay);
-                            }
+                            // Finaliza la actividad y envía la alarma a la main
+                            finish();
                         }
-                        // Finaliza la actividad y envía la alarma a la main
-                        finish();
                     }
-                }
-        );
+            );
+        }
     }
     public void manageTimePicker(){
         timePicker = (TimePicker) findViewById(R.id.timePicker);

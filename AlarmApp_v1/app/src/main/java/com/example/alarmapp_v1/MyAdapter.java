@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -39,6 +40,15 @@ public class MyAdapter extends ArrayAdapter<Alarm> {
             timeText.setText(item.getFullTime());
             daysText.setText(getShortDaysOfWeek(item));
             switchButton.setChecked(item.isActive());
+            switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    XmlManager xmlManager = new XmlManager(getContext());
+                    actualItem.setActive(isChecked);
+                    xmlManager.deleteAlarm(actualItem);
+                    xmlManager.newAlarm(actualItem);
+                }
+            });
             //
             row.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override

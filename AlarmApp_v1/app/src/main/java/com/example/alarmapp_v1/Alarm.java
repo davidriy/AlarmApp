@@ -49,6 +49,8 @@ public class Alarm  implements Serializable {
     public DaysOfWeek getDaysOfWeek() {
         return daysOfWeek;
     }
-
+    public void setDaysOfWeek(DaysOfWeek daysOfWeek) {
+        this.daysOfWeek = daysOfWeek;
+    }
 
 }

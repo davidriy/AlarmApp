@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Alarm> alarms;
     private ImageButton addAlarmBtn;
     private Alarm selectedAlarm;
+    private XmlManager xmlManager;
     // Request code
     private static final int REQUEST_CODE = 1;
 
@@ -39,12 +40,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void manage() {
+        xmlManager = new XmlManager(getApplicationContext());
         // Instantiate alarm object
         selectedAlarm = new Alarm("", true, "10", "22", new DaysOfWeek(false, false, false, false, false, false, false));
         // Instantiate new alarm intent
         newAlarmIntent = new Intent(this, NewAlarm.class);
         // Instanciate alarms list
-        alarms = new ArrayList<Alarm>();
+        alarms = xmlManager.obtenerListaAlarma();
         // Manage listView
         listView = findViewById(R.id.alarmList);
         // Instantiate adapter and assign adapter to listview
@@ -84,21 +86,21 @@ public class MainActivity extends AppCompatActivity {
         maxAlarmsToast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
         maxAlarmsToast.show();
     }
-
     public void saveAlarm(Alarm alarm) {
         if (adapter.alarms.size() >= 5) {
             createMaxAlarmsToast();
         } else {
             adapter.add(alarm);
+            xmlManager.newAlarm(alarm);
+
         }
     }
-
     public void openDeleteDialog() {
         dialogDays.show();
-
     }
     public void deleteAlarm(Alarm alarm){
         adapter.remove(alarm);
+        xmlManager.deleteAlarm(alarm);
     }
     public void instanciateDeleteDialog() {
         dialogDays = new AlertDialog.Builder(this)
