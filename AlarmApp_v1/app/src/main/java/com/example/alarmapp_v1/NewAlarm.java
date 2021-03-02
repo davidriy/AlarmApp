@@ -58,7 +58,6 @@ public class NewAlarm extends AppCompatActivity {
         manageTimePicker();
         manageRepeatBtn();
         manageSaveBtn();
-
     }
     public void manageInputName(){
         alarm.setTitle("Alarm");
@@ -92,6 +91,7 @@ public class NewAlarm extends AppCompatActivity {
         int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK ) - 1;
         return dayOfWeek;
     }
+    // Manages save button
     public void manageSaveBtn(){
         // If the alarm has not been saved already
         if(!alarmSaved){
@@ -216,6 +216,7 @@ public class NewAlarm extends AppCompatActivity {
         return alarmTime.isAfter(actualTime) ? true : false;
     }
 
+    // Acaba y envia la nueva alarma a la main activity
     @Override
     public void finish() {
         Intent data = new Intent();
